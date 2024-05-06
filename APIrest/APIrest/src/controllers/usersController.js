@@ -18,7 +18,7 @@ module.exports = {
         }); 
     },
 
-
+//Esto nos brinda la opcion de consultar los datos
     getAll(req, res) {
         const limit = req.query.limit || null;
         const offset = req.query.offset || null;
