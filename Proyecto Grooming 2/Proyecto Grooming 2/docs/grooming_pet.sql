@@ -50,7 +50,7 @@ CREATE TABLE mascotas (
   id_mascota int(11) NOT NULL,
   nombre_mascota varchar(255) NOT NULL,
   id_cliente int(11) NOT NULL,
-  tipo_mascota 
+  tipo_mascota var(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
