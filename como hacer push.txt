@@ -1,0 +1,7 @@
+1. ir a la carpeta donde esta el archivo
+2. dentro de la carpeta abrir el git bach
+	git init 
+	git status	
+	git add .
+	git commit - m "nombre"
+	git put origin main
