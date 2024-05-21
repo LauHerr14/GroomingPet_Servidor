@@ -1,6 +1,34 @@
 const db = require('../config/config');
 
 const cliente = {};
+
+
+
+cliente.login = (cliente, result) => {  
+    const sql = `SELECT id_cliente, nombre_cliente FROM clientes WHERE email = ? AND password = ?`;
+    db.query(
+        sql,
+        [
+            cliente.email,
+            cliente.password
+        ],
+        (err, res) => {
+            if (err) {
+                console.log("error ", err);
+                result(err, null);
+            } else {
+                console.log('cliente', [
+                    cliente.email,
+                    cliente.password
+                ])
+                console.log("Usuario encontrado: ", res);
+                result(null, res);
+            }
+        }
+    )
+};
+ 
+
 cliente.create = (cliente, result) => {
     const sql = `INSERT INTO clientes(
             nombre_cliente,
@@ -33,6 +61,9 @@ cliente.create = (cliente, result) => {
         }
     )
 };
+
+
+
 
 cliente.findAll = (limit, offset, result) => {
     let sql = `SELECT * FROM clientes`;
