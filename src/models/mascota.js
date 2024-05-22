@@ -14,8 +14,7 @@ Mascota.create = (mascota, result) => {
         [
             mascota.id_cliente,
             mascota.nombre_mascota,
-            mascota.tipo
-            
+            mascota.tipo_mascota
         ],
         (err, res) => {
             if (err) {

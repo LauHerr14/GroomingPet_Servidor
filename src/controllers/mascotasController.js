@@ -3,6 +3,7 @@ const Mascota = require('../models/mascota');
 module.exports = {
     register(req, res) {
         const mascota = req.body; //Datos del cliente
+        console.log('1:', mascota)
         Mascota.create(mascota, (err, data) => {
             if (err) {
                 return res.status(501).json({
