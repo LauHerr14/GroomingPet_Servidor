@@ -3,7 +3,7 @@ const db = require('../config/config');
 const agenda ={};
 
 agenda.findAll = ( result) => {
-    let sql = `SELECT * FROM agendar_citas `;
+    let sql = `SELECT * FROM agenda_citas `;
     if (limit != null && offset != null) {
         sql = sql.concat(` LIMIT ${limit} OFFSET ${offset}`);
     }
@@ -30,6 +30,6 @@ agenda.findById = (id, result) => {
     });
 }
 
-module.exports = agendar_citas;
+module.exports = agenda;
 
 
