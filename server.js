@@ -17,7 +17,6 @@ app.use(express.json());
 app.use(require('./src/routes/clientesRoutes'));
 app.use(require('./src/routes/mascotasRoutes'));
 app.use(require('./src/routes/serviciosRoutes'));
-app.use(require('./src/routes/agenda_citasRoutes'));
 
 
 //Inicializar el servidor
