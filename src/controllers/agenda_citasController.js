@@ -1,8 +1,8 @@
-const agenda = require('../models/agenda_citas');
+const agenda_citas = require('../models/agenda_cita');
 module.exports = {
 
     getAll(req, res) {   
-        agenda.findAll( (err, data) => {
+        agenda_citas.findAll( (err, data) => {
             if (err) {
                 return res.status(501).json(
                     {
@@ -24,7 +24,7 @@ module.exports = {
 
     getById (req, res) {
         const id = req.params.id;
-        Agendar.findById(id, (err, data) => {
+        agenda_citas.findById(id, (err, data) => {
             if (err) {
                 return res.status(501).json(
                     {

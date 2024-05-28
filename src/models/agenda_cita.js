@@ -1,12 +1,9 @@
 const db = require('../config/config');
 
-const agenda ={};
+const agenda_citas ={};
 
-agenda.findAll = ( result) => {
-    let sql = `SELECT * FROM agendar_citas `;
-    if (limit != null && offset != null) {
-        sql = sql.concat(` LIMIT ${limit} OFFSET ${offset}`);
-    }
+agenda_citas.findAll = ( result) => {
+    let sql = `SELECT * FROM agenda_citas `;
     console.log('sql: ', sql);
 
     db.query(sql, (err, res) => {
@@ -19,8 +16,8 @@ agenda.findAll = ( result) => {
     });
 }
 
-agenda.findById = (id, result) => {
-    db.query(`SELECT * FROM agenda_citas WHERE hora_agendada = ${id}`, (err, res) => {
+agenda_citas.findById = (id, result) => {
+    db.query(`SELECT hora_agendada FROM agenda_citas WHERE id_cliente = ${id}`, (err, res) => {
         if (err) {
             console.log('error: ', err);
             result(err, null);
@@ -30,6 +27,6 @@ agenda.findById = (id, result) => {
     });
 }
 
-module.exports = agendar_citas;
+module.exports = agenda_citas;
 
 
