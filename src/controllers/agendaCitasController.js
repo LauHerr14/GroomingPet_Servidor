@@ -1,5 +1,25 @@
-const agenda_citas = require('../models/agenda_cita');
+const agenda_citas = require('../models/agendaCita');
 module.exports = {
+
+    horaAgendada(req, res) {
+        const agenda_citas0 = req.body; 
+        console.log('1:', agenda_citas0)
+        agenda_citas.create(agenda_citas0, (err, data) => {
+            if (err) {
+                return res.status(501).json({
+                    success: false,
+                    message: 'Error, la cita no ha sido agendada',
+                    error: err
+                });
+            }
+            return res.status(201).json({
+                success: true,
+                message: 'Cita agendada',
+                data: data 
+            });
+        }); 
+    },
+
 
     getAll(req, res) {   
         agenda_citas.findAll( (err, data) => {

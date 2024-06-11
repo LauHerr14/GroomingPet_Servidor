@@ -1,20 +1,23 @@
 const db = require('../config/config');
 
-const Mascota = {};
-Mascota.create = (mascota, result) => {
-    const sql = `INSERT INTO mascotas(
+const agenda_citas ={};
+
+agenda_citas.create = (agenda_citas, result) => {
+    const sql = `INSERT INTO agenda_citas(
         id_cliente,    
-        nombre_mascota,
-        tipo_mascota
+        id_mascota,
+        fecha,
+        hora
         )
-        VALUES (?, ?, ?)`;
+        VALUES (?, ?, ?, ?)`;
 
     db.query(
         sql,
         [
-            mascota.id_cliente,
-            mascota.nombre_mascota,
-            mascota.tipo_mascota
+            agenda_citas.id_cliente,
+            agenda_citas.id_mascota,
+            agenda_citas.fecha,
+            agenda_citas.hora
         ],
         (err, res) => {
             if (err) {
@@ -22,20 +25,15 @@ Mascota.create = (mascota, result) => {
                 result(err, null);
             }
             else {
-                console.log('Id de la nueva mascota: ', res.insertId);
+                //console.log('Id de la nueva mascota: ', res.insertId);
                 result(null, res.insertId);
             }
         }
     )
 };
 
-
-
-Mascota.findAll = (limit, offset, result) => {
-    let sql = `SELECT * FROM mascotas`;
-    if (limit != null && offset != null) {
-        sql = sql.concat(` LIMIT ${limit} OFFSET ${offset}`);
-    }
+agenda_citas.findAll = ( result) => {
+    let sql = `SELECT * FROM agenda_citas `;
     console.log('sql: ', sql);
 
     db.query(sql, (err, res) => {
@@ -48,8 +46,8 @@ Mascota.findAll = (limit, offset, result) => {
     });
 }
 
-Mascota.findById = (id, result) => {
-    db.query(`SELECT * FROM mascotas WHERE id_mascota = ${id}`, (err, res) => {
+agenda_citas.findById = (id, result) => {
+    db.query(`SELECT fecha, hora FROM agenda_citas WHERE id_cliente = ${id}` , (err, res) => {
         if (err) {
             console.log('error: ', err);
             result(err, null);
@@ -59,4 +57,6 @@ Mascota.findById = (id, result) => {
     });
 }
 
-module.exports = Mascota;
+module.exports = agenda_citas;
+
+

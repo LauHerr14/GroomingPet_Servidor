@@ -2,7 +2,7 @@ const Mascota = require('../models/mascota');
 
 module.exports = {
     register(req, res) {
-        const mascota = req.body; //Datos del cliente
+        const mascota = req.body; //Datos de la mascota
         console.log('1:', mascota)
         Mascota.create(mascota, (err, data) => {
             if (err) {
@@ -15,7 +15,7 @@ module.exports = {
             return res.status(201).json({
                 success: true,
                 message: 'Creada la mscota',
-                data: data //id del usuario creado
+                data: data //id de la mascota
             });
         }); 
     },

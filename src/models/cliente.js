@@ -5,7 +5,8 @@ const cliente = {};
 
 
 cliente.login = (cliente, result) => {  
-    const sql = `SELECT id_cliente, nombre_cliente FROM clientes WHERE email = ? AND password = ?`;
+    const sql = `SELECT id_cliente, nombre_cliente FROM clientes 
+    WHERE email = ? AND password = ?`;
     db.query(
         sql,
         [
