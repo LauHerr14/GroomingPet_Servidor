@@ -20,6 +20,24 @@ module.exports = {
         }); 
     },
 
+    listaMascotas(req, res) {
+        const id = req.params.id;
+        Mascota.listaMascotas(id, (err, data) => {
+            if (err) {
+                return res.status(501).json({
+                    success: false,
+                    message: 'Error al obtener las mascotas',
+                    error: err
+                });
+            }
+            return res.status(201).json({
+                success: true,
+                message: 'Lista de mascotas obtenidas',
+                data: data //id de la mascota
+            });
+        }); 
+    },
+
 
     getAll(req, res) {
         const limit = req.query.limit || null;

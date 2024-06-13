@@ -29,6 +29,26 @@ Mascota.create = (mascota, result) => {
     )
 };
 
+Mascota.listaMascotas = (id, result) => {
+    const sql = `SELECT id_mascota, nombre_mascota FROM mascotas WHERE id_cliente = ?`
+
+    db.query(
+        sql,
+        [
+            id
+        ],
+        (err, res) => {
+            if (err) {
+                console.log("error ", err);
+                result(err, null);
+            } else {
+                console.log("Lista encontrada: ", res);
+                result(null, res);
+            }
+        }
+    )
+};
+
 
 
 Mascota.findAll = (limit, offset, result) => {

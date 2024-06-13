@@ -1,6 +1,7 @@
 const db = require('../config/config');
 
 const agenda_citas ={};
+const fecha ={};
 
 agenda_citas.create = (agenda_citas, result) => {
     const sql = `INSERT INTO agenda_citas(
@@ -31,6 +32,17 @@ agenda_citas.create = (agenda_citas, result) => {
         }
     )
 };
+
+agenda_citas.getByDate = (fecha, result) => {
+    db.query(`SELECT hora FROM agenda_citas WHERE fecha = ?`,[fecha], (err, res) => {
+        if (err) {
+            console.log('error: ', err);
+            result(err, null);
+        } else {
+            result(null, res);
+        }
+    });
+}
 
 agenda_citas.findAll = ( result) => {
     let sql = `SELECT * FROM agenda_citas `;

@@ -20,6 +20,28 @@ module.exports = {
         }); 
     },
 
+    getByDate(req, res) {
+        const fecha = req.params.fecha;
+        agenda_citas.getByDate(fecha, (err, data) => {
+            if (err) {
+                return res.status(501).json(
+                    {
+                        success: false,
+                        message: 'Error, la hora seleccionada no esta disponible',
+                        error: err
+                    }
+                );
+            }
+            return res.status(202).json(
+                {
+                    success: true,
+                    message: 'Su cita ah sido asignada con exito',
+                    data: data
+                }
+            );
+        });
+    },
+
 
     getAll(req, res) {   
         agenda_citas.findAll( (err, data) => {
