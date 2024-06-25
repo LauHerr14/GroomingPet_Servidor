@@ -8,4 +8,5 @@ router.get('/agenda_citas/todo', agendaCitasController.getAll);  //consulta las 
 router.get('/agenda_citas/:id', agendaCitasController.getById); //consultar citas agendadas por el ususario 
 router.get('/agenda_citas/dia/:fecha', agendaCitasController.getByDate);
 
+
 module.exports = router;

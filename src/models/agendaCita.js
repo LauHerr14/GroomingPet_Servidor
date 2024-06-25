@@ -34,11 +34,12 @@ agenda_citas.create = (agenda_citas, result) => {
 };
 
 agenda_citas.getByDate = (fecha, result) => {
-    db.query(`SELECT hora FROM agenda_citas WHERE fecha = ?`,[fecha], (err, res) => {
+    db.query(`SELECT hour(hora) as hora_ocupada FROM agenda_citas WHERE fecha = ?`,[fecha], (err, res) => {
         if (err) {
             console.log('error: ', err);
             result(err, null);
         } else {
+            console.log(">>>> ", res);
             result(null, res);
         }
     });

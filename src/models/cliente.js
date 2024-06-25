@@ -63,7 +63,28 @@ cliente.create = (cliente, result) => {
     )
 };
 
-
+cliente.validar = (cliente, result) => {
+    const sql = `SELECT id_cliente FROM clientes 
+    WHERE email = ?`;
+    db.query(
+        sql,
+        [
+            cliente.email
+        ],
+        (err, res) => {
+            if (err) {
+                console.log("error ", err);
+                result(err, null);
+            } else {
+                console.log('cliente', [
+                    cliente.email
+                ])
+                console.log("Usuario encontrado: ", res);
+                result(null, res);
+            }
+        }
+    )
+};
 
 
 cliente.findAll = (limit, offset, result) => {

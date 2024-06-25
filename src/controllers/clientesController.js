@@ -41,6 +41,26 @@ module.exports = {
     });
   },
 
+  validar(req, res) {
+    const cliente1 = req.body;
+    
+
+    cliente.validar(cliente1, (err, data) => {
+      if (err) {
+        return res.status(501).json({
+          success: false,
+          message: "Error al obtener el usuarios",
+          error: err,
+        });
+      }
+      return res.status(202).json({
+        success: true,
+        message: "Usuario obtenidos",
+        data: data,
+      });
+    });
+  },
+
   getAll(req, res) {
     const limit = req.query.limit || null;
     const offset = req.query.offset || null;
