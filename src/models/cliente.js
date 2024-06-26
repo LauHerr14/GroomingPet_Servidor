@@ -64,7 +64,7 @@ cliente.create = (cliente, result) => {
 };
 
 cliente.validar = (cliente, result) => {
-    const sql = `SELECT id_cliente FROM clientes 
+    const sql = `SELECT id_cliente, nombre_cliente FROM clientes 
     WHERE email = ?`;
     db.query(
         sql,
